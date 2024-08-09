@@ -1,0 +1,47 @@
+---
+
+
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import BlogPost from "../../components/BlogPost.astro";
+import SearchBar from "../../components/SearchBar.astro";
+import Layout from "../../layout/Layout.astro";
+
+const query: string | null = Astro.url.searchParams.get('query');
+
+const allBlogArticles: CollectionEntry<'blog'>[] = await getCollection('blog');
+
+// Filter articles based on query
+const searchResults = allBlogArticles.filter(article => {
+  const titleMatch: boolean = article.data.title
+    .toLowerCase()
+    .includes(query!.toLowerCase());
+
+    const bodyMatch: boolean = article.body
+    .toLowerCase()
+    .includes(query!.toLowerCase());
+
+    const slugMatch: boolean = article.slug
+    .toLowerCase()
+    .includes(query!.toLowerCase());
+
+    return titleMatch || bodyMatch || slugMatch
+});
+---
+
+<Layout title="Search Results">
+  <a href="/blog" class="inline-block bg-gray-100 p-2 mb-5 hover:bg-indigo-500 hover:text-white">
+    Blog</a>
+
+  <SearchBar />
+
+  <br>
+
+  <h1 class="text-2xl pb-3 mt-6">Results For <strong>{query}</strong></h1>
+
+  <div class="">
+    {searchResults.map(article => (
+      <BlogPost article={article} />
+    ))}
+  </div>
+</Layout>

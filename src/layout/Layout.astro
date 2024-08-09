@@ -1,0 +1,19 @@
+---
+
+import Header from '../components/Header.astro'
+import '../styles/globals.css'
+---
+
+<html lang="en">
+  <head>
+    <meta:title = Astro/>
+  </head>
+  <body class="min-h-screen bg-background font-sans antialiased">
+    <div class="relative flex min-h-screen flex-col">
+      <main class="flex-auto">
+<Header/>
+        <slot />
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+---
+import Logo from "./Logo";
+import ModeToggle from "./ModeToggle";
+import Navigation from './Nav';
+---
+         <header class="w-full  border-b border-border">
+      <div class="container flex items-center justify-between h-16 px-4 md:px-6">
+      <Logo />
+      <Navigation client:load />
+      <ModeToggle client:load /> 
+      </div>
+         </header>

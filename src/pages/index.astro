@@ -1,0 +1,50 @@
+---
+import BlogPost from "../components/BlogPost.astro";
+import SearchBar from "../components/SearchBar.astro";
+import Layout from "../layout/Layout.astro";
+
+
+
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+
+const allBlogArticles: CollectionEntry<'blog'>[] = (await getCollection('blog'))
+  .sort((a:CollectionEntry<'blog'>, b:CollectionEntry<'blog'>) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+
+const most3RecentArticle: CollectionEntry<'blog'>[] = allBlogArticles.slice(0, 3);
+---
+<Layout>
+<div class="container max-w-3xl px-4 py-12 md:px-6 md:py-16">
+        <div class="space-y-6 text-center">
+          <h1 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Simple Blog Layout</h1>
+          <p class="text-muted-foreground md:text-xl">
+            This is a simple page layout with a centered content area and ample spacing. It consists of a title and
+            paragraph text.
+          </p>
+        </div>
+      </div>
+    <div class="flex flex-wrap justify-center gap-4 p-4">
+        <div class="flex-none w-60 h-40 bg-blue-500 text-white flex items-center justify-center rounded-lg shadow-lg">
+            Card 1
+        </div>
+        <div class="flex-none w-60 h-40 bg-green-500 text-white flex items-center justify-center rounded-lg shadow-lg">
+            Card 2
+        </div>
+        <div class="flex-none w-60 h-40 bg-red-500 text-white flex items-center justify-center rounded-lg shadow-lg">
+            Card 3
+        </div>
+        <div class="flex-none w-60 h-40 bg-yellow-500 text-white flex items-center justify-center rounded-lg shadow-lg">
+            Card 4
+        </div>
+    </div>
+<SearchBar />
+
+
+  <!-- top three most recent -->
+  <div class="">
+   {most3RecentArticle.map(article => (
+    <BlogPost article={article} />
+   ))}
+  </div>
+</Layout>

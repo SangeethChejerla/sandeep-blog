@@ -1,0 +1,54 @@
+---
+import { CollectionEntry, getCollection } from "astro:content";
+
+import BlogPost from "../../components/BlogPost.astro";
+import MainPagination from "../../components/MainPagination.astro";
+import SearchBar from "../../components/SearchBar.astro";
+import Layout from "../../layout/Layout.astro";
+
+// Get the current page from the URL, default to 1 if not specified
+const currentPage: number = +Astro.url.searchParams.get('page')! || 1;
+const ARTICLES_PER_PAGE = 3;
+
+// Fetch all blog articles and sort them by publication date in descending order
+const allBlogArticles: CollectionEntry<'blog'>[] = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Exclude the first 3 articles from pagination calculations
+const articlesToPaginate = allBlogArticles.slice(3);
+
+// Calculate the total number of pages based on remaining articles
+const totalPages: number = Math.ceil(articlesToPaginate.length / ARTICLES_PER_PAGE);
+
+// Ensure the current page is within the valid range
+const validPage = Math.max(1, Math.min(currentPage, totalPages));
+
+// Calculate the starting index for the current page
+const startIndex: number = (validPage - 1) * ARTICLES_PER_PAGE;
+
+// Slice the articles for the current page
+const articlesForPage: CollectionEntry<'blog'>[] = articlesToPaginate.slice(
+  startIndex,
+  startIndex + ARTICLES_PER_PAGE
+);
+---
+
+<Layout>
+  <h1 class="text-2xl pb-3">Blog Posts</h1>
+
+  <SearchBar />
+  <br>
+
+  <div class="">
+    {articlesForPage.map(article => (
+      <BlogPost article={article} />
+    ))}
+  </div>
+
+<MainPagination 
+  currentPage={validPage} 
+  totalPages={totalPages} 
+  disablePrevious={validPage === 1} 
+  disableNext={validPage === totalPages} 
+/>
+</Layout>

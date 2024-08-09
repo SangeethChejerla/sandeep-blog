@@ -1,0 +1,37 @@
+---
+title: 'Blog with nextjs 14 with MDX'
+description: 'Creating a simple blog with nextjs 14 and MDX'
+pubDate: 2024-03-05
+updatedDate: 2024-03-20
+image: '/src/assets/cover/smart.jpg'
+heroAlt: 'Orion in his full battle gear'
+tags: ['space', 'games']
+---
+
+# MDX Ecosystem Overview
+
+MDX, Markdown with JSX, brings together Markdown simplicity with the power of JSX, enabling you to create dynamic and interactive content seamlessly. Let's take a look at some key components of the MDX ecosystem and how they integrate into a Next.js project.
+
+## @next/mdx
+
+@next/mdx integrates MDX into Next.js, allowing you to import .mdx files directly as components into your Next.js application. This seamless integration enables you to leverage the power of MDX within your Next.js projects effortlessly.
+
+## @mdx-js/loader
+
+The @mdx-js/loader module loads MDX files and compiles them into React components. This functionality is crucial for making MDX files usable within your Next.js project, ensuring smooth rendering and interaction with MDX content.
+
+## remark
+
+Remark is a powerful Markdown processor that parses and transforms Markdown content. As a core part of the MDX ecosystem, remark plays a vital role in handling Markdown syntax, enabling you to process Markdown effectively within your Next.js application.
+
+## remark-html
+
+Remark-html converts Markdown AST (Abstract Syntax Tree) into HTML, allowing Markdown content to be rendered in the browser. With remark-html, you can seamlessly render Markdown content as HTML, ensuring compatibility and ease of display within your Next.js project.
+
+## rehype
+
+Rehype is an HTML processor that parses and transforms HTML content. Often used in combination with remark, rehype enables you to handle HTML generated from Markdown effectively within your Next.js application, ensuring smooth processing and rendering of HTML content.
+
+## rehype-highlight
+
+Rehype-highlight adds syntax highlighting to code blocks in HTML, enhancing the readability and aesthetics of code snippets within your MDX content. By using Prism.js or another highlighting library, rehype-highlight ensures that your code blocks are visually appealing and easy to understand within your Next.js project.

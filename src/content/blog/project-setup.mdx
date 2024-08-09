@@ -1,0 +1,90 @@
+---
+title: 'Optimizing Your Dev Environment'
+description: 'Configuring ESLint, Prettier, Next.js, and Shadcn UI'
+pubDate: 2025-08-01
+updatedDate: 2022-09-15
+image: '/src/assets/cover/rocket.avif'
+heroAlt: 'rocket into the space'
+tags: ['technology']
+---
+
+# Setting Up Your Development Environment: ESLint, Prettier, Next.js, and Shadcn UI
+
+Configuring your development environment is key to maintaining code quality and consistency. This guide will walk you through setting up ESLint, Prettier, Next.js, and Shadcn UI.
+
+## 1. Installing ESLint, Prettier, and Their Plugins
+
+Install the necessary packages with:
+
+```bash
+npm install eslint-config-prettier eslint-plugin-prettier prettier -D
+```
+
+## 2. Configuring ESLint
+
+Create a .eslintrc.json file:
+
+```
+{
+  "printWidth": 80,
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": true,
+  "singleQuote": true,
+  "quoteProps": "as-needed",
+  "jsxSingleQuote": false,
+  "trailingComma": "all",
+  "bracketSpacing": true,
+  "jsxBracketSameLine": false,
+  "arrowParens": "always",
+  "proseWrap": "never",
+  "endOfLine": "lf",
+  "editorConfig": true
+}
+```
+
+## 3. Configuring Prettier
+
+Create a .prettierrc.json file:
+
+```
+{
+  "printWidth": 80,
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": true,
+  "singleQuote": true,
+  "quoteProps": "as-needed",
+  "jsxSingleQuote": false,
+  "trailingComma": "all",
+  "bracketSpacing": true,
+  "jsxBracketSameLine": false,
+  "arrowParens": "always",
+  "proseWrap": "never",
+  "endOfLine": "lf",
+  "editorConfig": true
+}
+```
+
+## 4. Configuring Next.js
+
+Update your next.config.mjs file (example):
+
+```
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
+  },
+};
+
+export default nextConfig;
+```
+
+# Conclusion
+
+## With these configurations, your development environment will be set up for clean, consistent, and efficient coding. Happy coding!
