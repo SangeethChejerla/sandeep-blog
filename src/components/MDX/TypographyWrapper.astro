@@ -1,0 +1,13 @@
+---
+import PostNavigation from '../PostNavigation.astro';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+<div class={`prose prose-sm md:prose-md lg:prose-lg dark:prose-invert max-w-3xl mx-auto border-2 border-gray-200 dark:border-gray-700 rounded-xl shadow-lg p-4 ${className}`}>
+  <slot />
+  <PostNavigation />
+</div>

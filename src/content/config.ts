@@ -10,6 +10,7 @@ const blogCollection = defineCollection({
     pubDate: z.date(),
     updatedDate: z.date().optional(),
     tags: z.array(z.string()).optional(),
+    minutesRead: z.string().optional(),
   }),
 });
 

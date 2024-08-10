@@ -4,13 +4,14 @@ import { formatDate } from "../lib/utils";
 import Tags from "./tags.astro";
 
 interface Props {
-  article: CollectionEntry<'blog'>;
+  article: CollectionEntry<'blog'>,
 }
 
 const { article } = Astro.props;
 ---
+
 <div class="max-w-4xl mx-auto p-6">
-  <article class="flex flex-col sm:flex-row gap-6 borde shadow-md rounded-lg">
+  <article class="flex flex-col sm:flex-row gap-6 border shadow-md rounded-lg">
     <a href={`/blog/${article.slug}`} class="flex flex-col sm:flex-row gap-4">
       <img
         src={article.data.image}
@@ -25,12 +26,11 @@ const { article } = Astro.props;
         <h2 class="mt-2 text-xl font-bold">
           <a href={`/blog/${article.slug}`} class="hover:underline">{article.data.title}</a>
         </h2>
-        <div class="h-2"></div> <!-- added gap between title and description -->
-        <p class="text-sm ">
+        <p class="text-sm mt-2">
           {article.data.description}
         </p>
         <div class="mt-3">
-        <Tags tags={article.data.tags} />
+          <Tags tags={article.data.tags} />
         </div>
       </div>
     </a>

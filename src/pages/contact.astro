@@ -1,0 +1,28 @@
+---
+import LinkItem from "../components/LinkItem.astro";
+import Layout from "../layout/Layout.astro";
+
+
+const links = [
+  { href: "#", iconPath: "m22 13.29-3.33-10a.42.42 0 0 0-.14-.18.38.38 0 0 0-.22-.11.39.39 0 0 0-.23.07.42.42 0 0 0-.14.18l-2.26 6.67H8.32L6.1 3.26a.42.42 0 0 0-.1-.18.38.38 0 0 0-.26-.08.39.39 0 0 0-.23.07.42.42 0 0 0-.14.18L2 13.29a.74.74 0 0 0 .27.83L12 21l9.69-6.88a.71.71 0 0 0 .31-.83Z", text: "GitHub" },
+  { href: "#", iconPath: "M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z M2 9h4v12H2z M4 4a2 2 0 1 1 0 4 2 2 0 0 1 0-4", text: "LinkedIn" },
+  { href: "#", iconPath: "M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z", text: "Twitter" },
+  { href: "#", iconPath: "M22 7L13.03 12.7a1.94 1.94 0 0 1-2.06 0L2 7", text: "Email" }
+];
+---
+<Layout>
+  <body class="flex items-center justify-center min-h-screen p-4">
+    <div class="w-full max-w-3xl mx-auto  border border-gray-200 rounded-lg shadow-lg p-6">
+      <div class="mb-6">
+        <h3 class="text-lg font-bold">LinkTree</h3>
+      </div>
+      <div class="flex flex-col gap-4">
+        {links.map(link => (
+          <LinkItem href={link.href} iconPath={link.iconPath} text={link.text} key={link.href} />
+        ))}
+      </div>
+    </div>
+  </body>
+</Layout>
+
+
